@@ -35,7 +35,7 @@ These values come from the saved notebook execution, not a fresh independent rer
 |-- mobilefacelora_core.py     # Model, data, training, evaluation, and export code
 |-- data/README.md             # Expected dataset structure; no data is tracked
 |-- outputs/                   # Lightweight figures and artifact documentation
-|-- third_party/edgeface       # Pinned official EdgeFace Git submodule
+|-- edgeface/                  # Pinned official EdgeFace Git submodule
 |-- docs/                      # Status and reproducibility notes
 |-- scripts/                   # Repository validation utility
 +-- requirements.txt           # Recorded direct Python dependencies

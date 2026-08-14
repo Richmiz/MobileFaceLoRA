@@ -80,7 +80,7 @@ DEFAULT_CONFIG = dict(
     train_dir='data/aligned_train_224',
     val_dir='data/val',
     output_dir='outputs',
-    edgeface_dir='third_party/edgeface',
+    edgeface_dir='edgeface',
 
     # Benchmarks available
     benchmarks=dict(
@@ -1024,7 +1024,7 @@ def load_edgeface_wrapper(cfg, device, model_name=None,
     model_name = model_name or cfg.get(
         'teacher_model_name', 'edgeface_s_gamma_05')
     edgeface_dir = os.path.abspath(cfg.get(
-        'edgeface_dir', os.path.join('third_party', 'edgeface')))
+        'edgeface_dir', 'edgeface'))
     if not os.path.isdir(edgeface_dir):
         raise FileNotFoundError(
             f"EdgeFace source directory not found: {edgeface_dir}. "

@@ -8,13 +8,13 @@ The default configuration uses seed 42. Full deterministic mode is optional beca
 
 ## EdgeFace dependency
 
-The hybrid preset requires the official EdgeFace source and the edgeface_s_gamma_05 checkpoint. The source is pinned through third_party/edgeface. Initialize it with:
+The hybrid preset requires the official EdgeFace source and the edgeface_s_gamma_05 checkpoint. The source is pinned through edgeface/. Initialize it with:
 
 ~~~bash
 git submodule update --init --recursive
 ~~~
 
-The core configuration points to third_party/edgeface by default. If a different checkout is required, override edgeface_dir in the experiment configuration.
+The core configuration points to edgeface/ by default. If a different checkout is required, override edgeface_dir in the experiment configuration.
 
 ## Evaluation protocol implemented in code
 
