@@ -1,6 +1,7 @@
 # Python environments and caches
 .venv/
 venv/
+.tflite-export-tools/
 __pycache__/
 *.py[cod]
 *.so
@@ -28,6 +29,9 @@ outputs/**
 !outputs/README.md
 !outputs/training_curves.png
 !outputs/training_samples.png
+!outputs/mobile_export/
+outputs/mobile_export/**
+!outputs/mobile_export/mobilefacelora_manifest.json
 
 # Historical lightweight results are retained, but model binaries are not
 *.pth

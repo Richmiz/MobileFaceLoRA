@@ -1,0 +1,135 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-08-14T08:27:12.074263+00:00",
+  "repository_commit": "6bb72fa16743a48be8a2610907381739a2dc3a01",
+  "repository_dirty_at_export": true,
+  "exporter": {
+    "path": "scripts/export_mobile_tflite.py",
+    "sha256_lf": "d9998c123c1dafb84956b030fb19746cf7e70243c98a0c4ad4160978adacbb90"
+  },
+  "source_checkpoint": {
+    "path": "outputs/mobilefacelora_trained.pth",
+    "bytes": 348419836,
+    "sha256": "10f82994b1c948264162a502a01c1e33bab8b0f07bb28f3f7912a21eb3f00c82"
+  },
+  "model": {
+    "preset": "hybrid_teacher_qkvo_r8",
+    "identity_classes_in_training_head": 540,
+    "input_size": 224,
+    "embedding_dimensions": 512,
+    "clip_model": "openai/clip-vit-base-patch16",
+    "lora_rank": 8,
+    "lora_alpha": 16,
+    "lora_targets": [
+      "q_proj",
+      "k_proj",
+      "v_proj",
+      "out_proj"
+    ]
+  },
+  "deployment_contract": {
+    "input_layout": "NCHW",
+    "input_shape": [
+      1,
+      3,
+      224,
+      224
+    ],
+    "input_dtype": "float32",
+    "input_color_order": "RGB",
+    "input_value_range_before_normalization": [
+      0.0,
+      1.0
+    ],
+    "normalization_mean": [
+      0.48145466,
+      0.4578275,
+      0.40821073
+    ],
+    "normalization_std": [
+      0.26862954,
+      0.26130258,
+      0.27577711
+    ],
+    "output_shape": [
+      1,
+      512
+    ],
+    "output_dtype": "float32",
+    "output_l2_normalized": true,
+    "similarity": "cosine similarity (dot product of normalized embeddings)",
+    "decision_threshold": null,
+    "decision_threshold_note": "Calibrate on deployment-domain validation pairs before release.",
+    "arcface_training_head_included": false,
+    "lora_adapters_merged": true
+  },
+  "toolchain": {
+    "python": "3.12.3",
+    "torch": "2.11.0+cu130",
+    "numpy": "2.5.2",
+    "transformers": "5.6.2",
+    "peft": "0.19.1",
+    "litert_torch": "0.9.3",
+    "ai_edge_litert": "2.1.6",
+    "ai_edge_quantizer": "0.8.0"
+  },
+  "validation_sample": "seeded synthetic RGB image, seed=42",
+  "artifacts": {
+    "fp32": {
+      "path": "outputs/mobile_export/mobilefacelora_hybrid_r8_fp32.tflite",
+      "bytes": 345245648,
+      "sha256": "eb3a8e60fcba1793a42a102078fcbd4166e115456199bc78a81ba4f9f792e878",
+      "runtime_contract": {
+        "signature": "serving_default",
+        "input_name": "face_image",
+        "input_shape": [
+          1,
+          3,
+          224,
+          224
+        ],
+        "input_dtype": "float32",
+        "output_name": "output_0",
+        "output_shape": [
+          1,
+          512
+        ],
+        "output_dtype": "float32"
+      },
+      "numerical_validation": {
+        "cosine_similarity": 0.9999999999965573,
+        "max_absolute_error": 4.6193599700927734e-07,
+        "mean_absolute_error": 9.175278137263376e-08,
+        "output_l2_norm": 0.9999999932306558
+      }
+    },
+    "weight_int8": {
+      "path": "outputs/mobile_export/mobilefacelora_hybrid_r8_weight_int8.tflite",
+      "bytes": 289796560,
+      "sha256": "d79d70527f74375e305f4bca8730fd6a1244b707f651bf721e5cbb13b3ea8677",
+      "runtime_contract": {
+        "signature": "serving_default",
+        "input_name": "face_image",
+        "input_shape": [
+          1,
+          3,
+          224,
+          224
+        ],
+        "input_dtype": "float32",
+        "output_name": "output_0",
+        "output_shape": [
+          1,
+          512
+        ],
+        "output_dtype": "float32"
+      },
+      "numerical_validation": {
+        "cosine_similarity": 0.9998738301238077,
+        "max_absolute_error": 0.002014167606830597,
+        "mean_absolute_error": 0.0005574940471149148,
+        "output_l2_norm": 1.0000000525528894
+      }
+    }
+  }
+}

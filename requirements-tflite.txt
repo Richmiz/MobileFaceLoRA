@@ -1,0 +1,13 @@
+# Run on Linux/WSL with Python 3.12. The training requirements must already
+# be installed because the exporter reconstructs the PyTorch checkpoint.
+litert-torch==0.9.3
+ai-edge-litert==2.1.6
+ai-edge-quantizer==0.8.0
+litert-converter==0.3.1
+litert-lm-builder==0.16.0
+torchao==0.18.0
+jax==0.11.0
+jaxlib==0.11.0
+numpy==2.5.2
+scipy==1.17.0
+ml-dtypes==0.5.4

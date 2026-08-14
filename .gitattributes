@@ -1,0 +1,4 @@
+# Keep hash-identified export provenance byte-stable across platforms.
+scripts/export_mobile_tflite.py text eol=lf
+outputs/mobile_export/mobilefacelora_manifest.json text eol=lf
+requirements-tflite.txt text eol=lf

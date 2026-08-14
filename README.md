@@ -25,7 +25,7 @@ The notebook completed training and restored epoch 4 as the best checkpoint. Its
 | CPLFW | 87.82% | 2.31% |
 | Mean | 87.52% | - |
 
-These values come from the saved notebook execution, not a fresh independent rerun. Full final evaluation, a method-consistent ablation, mobile export validation, and physical-device latency evaluation remain open. See [Project status](docs/PROJECT_STATUS.md).
+These values come from the saved notebook execution, not a fresh independent rerun. Full final evaluation, a method-consistent ablation, and physical-device latency evaluation remain open. The development checkpoint now has LiteRT-interpreter-validated TFLite exports; see [Mobile TFLite export](docs/mobile_tflite_export.md).
 
 ## Repository contents
 
@@ -37,8 +37,9 @@ These values come from the saved notebook execution, not a fresh independent rer
 |-- outputs/                   # Lightweight figures and artifact documentation
 |-- edgeface/                  # Pinned official EdgeFace Git submodule
 |-- docs/                      # Status and reproducibility notes
-|-- scripts/                   # Repository validation utility
-+-- requirements.txt           # Recorded direct Python dependencies
+|-- scripts/                   # Repository validation and TFLite export utilities
+|-- requirements-tflite.txt    # Pinned LiteRT conversion environment
++-- requirements.txt           # Recorded training dependencies
 ~~~
 
 ## Clone and set up
@@ -89,6 +90,14 @@ python scripts/validate_public_repo.py
 ## Model and deployment artifacts
 
 Checkpoints (.pth, .pt), ONNX external-data files, PTF/TFLite exports, and datasets are ignored. The saved current checkpoint is a full research checkpoint of approximately 348 MB; it is not a compact deployment package. See [Artifact policy](docs/ARTIFACTS.md).
+
+Export that exact development checkpoint to verified TFLite artifacts under WSL/Linux with:
+
+~~~bash
+PYTHONPATH=.tflite-export-tools python scripts/export_mobile_tflite.py
+~~~
+
+The generated binaries remain local and ignored. The tracked `outputs/mobile_export/mobilefacelora_manifest.json` records their hashes, sizes, runtime tensor contract, toolchain, and numerical agreement with PyTorch. See [Mobile TFLite export](docs/mobile_tflite_export.md) for setup and integration details.
 
 ## EdgeFace
 
