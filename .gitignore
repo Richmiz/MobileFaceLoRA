@@ -1,0 +1,47 @@
+# Python environments and caches
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.so
+.ipynb_checkpoints/
+.pytest_cache/
+.mypy_cache/
+
+# IDE and OS metadata
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Local datasets: retain only the public structure documentation
+data/**
+!data/README.md
+
+# Local copies and archived working directories
+second run/
+edgeface-master/
+.public-worktree/
+
+# Generated experiment artifacts
+outputs/**
+!outputs/README.md
+!outputs/training_curves.png
+!outputs/training_samples.png
+
+# Historical lightweight results are retained, but model binaries are not
+*.pth
+*.pt
+*.ptf
+*.onnx
+*.onnx.data
+*.tflite
+*.ckpt
+*.safetensors
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+wandb/
+runs/
